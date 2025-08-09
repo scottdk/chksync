@@ -1,0 +1,2 @@
+File in subdirectory 2
+This one has more content.
