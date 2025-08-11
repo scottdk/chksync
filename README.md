@@ -12,6 +12,7 @@ When mygrating my NAS to a new Operating system, I wanted a faster way to verify
 - ⚡ **High Performance** - Efficiently handles large directories with progress reporting
 - 🎯 **Flexible Filtering** - Option to show only differences
 - 📱 **Smart Auto-detection** - Automatically chooses best output format for terminal vs pipes
+- 🧪 **Test Suite** - Includes comprehensive test file generator for development and validation
 
 ## Installation
 
@@ -29,6 +30,93 @@ pip install rich pandas tabulate
 git clone https://github.com/scottdk/chksync.git
 cd chksync
 ```
+
+## Test File Generation
+
+For testing and development purposes, the repository includes a `create_test_files.py` script that generates comprehensive test data.
+
+### Running the Test File Generator
+
+```bash
+python create_test_files.py
+```
+
+This script creates a complete test directory structure with:
+
+#### Basic Test Folders
+- **`test/test_folder1/`** and **`test/test_folder2/`** - Realistic folder comparison scenarios
+- Common files (same content), unique files, and files with different sizes
+- Subdirectories with nested file structures
+- Symbolic links (with fallback for unsupported systems)
+
+#### Performance Test Folders  
+- **`test/test_large_folder1/`** and **`test/test_large_folder2/`** - Large-scale testing
+- 350+ files each with various numbering patterns
+- Content variations between folders for comprehensive comparison testing
+- Different file size patterns to test sorting and performance
+
+#### Mixed Content Testing
+- **`test/mixed_content/`** - Edge case testing scenarios
+- Empty files, single lines, multi-line content
+- Unicode characters and special content
+- Whitespace handling and long lines
+- Various file sizes from 0 bytes to 1KB+
+
+### Generated Test Structure
+```
+test/
+├── test_folder1/
+│   ├── common.txt                    # Same content in both folders
+│   ├── file1.txt                     # Different content/size
+│   ├── unique1.txt                   # Only exists in folder1  
+│   ├── takeout.zip -> ../dummy.zip   # Symbolic link
+│   └── subdir1/
+│       ├── sub_file.txt
+│       └── sub_file1.txt
+├── test_folder2/
+│   ├── common.txt                    # Same as folder1
+│   ├── file1.txt                     # Different from folder1
+│   ├── unique2.txt                   # Only exists in folder2
+│   ├── takeout.zip -> ../dummy.zip   # Symbolic link
+│   └── subdir1/
+│       ├── sub_file.txt
+│       ├── sub_file1.txt
+│       └── sub_file2.txt             # Extra file in folder2
+├── test_large_folder1/               # 350+ files for performance testing
+├── test_large_folder2/               # 350+ files with differences
+├── mixed_content/                    # Various content types
+└── dummy.zip                         # Target for symbolic links
+```
+
+### Test Scenarios
+
+The generated test data provides scenarios for:
+- **Basic functionality**: File size differences, unique files, common files
+- **Directory structure**: Subdirectories with varying file counts  
+- **Performance testing**: Large datasets with hundreds of files
+- **Edge cases**: Empty files, Unicode content, long lines, whitespace
+- **Symbolic links**: Link handling and fallback behavior
+- **Sorting validation**: Mixed numbering patterns (1, 10, 100, 1000, etc.)
+
+### Example Test Commands
+
+After running `create_test_files.py`, test chksync with:
+
+```bash
+# Basic functionality test
+python chksync.py test/test_folder1 test/test_folder2 --rich
+
+# Performance test with large datasets  
+python chksync.py test/test_large_folder1 test/test_large_folder2 --csv --only-diffs
+
+# Mixed content testing
+python chksync.py test/test_folder1 test/mixed_content --plain
+
+# Verbose progress on large folders
+python chksync.py test/test_large_folder1 test/test_large_folder2 --verbose
+```
+
+**Note**: Test files are automatically excluded from git tracking via `.gitignore`. The script can be run multiple times safely - it will recreate the entire test structure each time.
 
 ## Usage
 
