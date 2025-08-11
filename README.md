@@ -138,7 +138,7 @@ python chksync.py -f1 <folder1> -f2 <folder2> [OPTIONS]
 | `-p` | `--plain` | Force plain text output (overrides rich auto-detection) |
 | `-c` | `--csv` | Output in CSV format |
 | `-v` | `--verbose` | Increase verbosity: `-v` for progress, `-vv` for debug output |
-| `--only-diffs` | | Show only entries with differences |
+| `-d` | `--only-diffs` | Show only entries with differences |
 | `-f1` | `--folder1` | First folder to compare (alternative to positional) |
 | `-f2` | `--folder2` | Second folder to compare (alternative to positional) |
 
