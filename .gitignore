@@ -6,6 +6,12 @@ dist/
 chksync-static
 chksync
 
+# PyInstaller spec files
+*.spec
+
+# Development and alternative versions
+chksync_func.py
+
 # Test directories (keeping test data out of repo)
 test/
 
