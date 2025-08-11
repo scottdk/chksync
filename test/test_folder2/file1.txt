@@ -1,3 +1,0 @@
-This is a different test file in folder2.
-It has different content from folder1.
-This file is slightly larger.
