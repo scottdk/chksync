@@ -3,7 +3,7 @@
 # This script builds the chksync application using PyInstaller and uploads it to a remote server.
 # 
 # Usage: ./build-and-deploy.sh [remote_host]
-# Example: ./build-and-deploy.sh dockuser@10.0.0.5
+# Example: ./build-and-deploy.sh user@10.0.0.5
 #
 # Features:
 # - Cleans previous builds
@@ -12,7 +12,7 @@
 # - Uploads binary to remote server via SFTP
 
 # Set default remote host or use parameter
-REMOTE_HOST="${1:-dockuser@10.0.0.5}"
+REMOTE_HOST="${1:-user@10.0.0.5}"
 
 echo "Building chksync application..."
 echo "Remote host: $REMOTE_HOST"
