@@ -2,6 +2,10 @@
 build/
 dist/
 
+# Binary executables
+chksync-static
+chksync
+
 # Test directories (keeping test data out of repo)
 test/
 
