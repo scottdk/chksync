@@ -1,1 +1,61 @@
-build
+# Build directories
+build/
+dist/
+
+# Test directories (keeping test data out of repo)
+test/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller
+*.manifest
+*.spec.bak
+
+# Virtual environments
+.venv/
+venv/
+.env
+env/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Distribution and packaging
+*.egg-info/
+.installed.cfg
+*.egg
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Runtime and output files
+*.out
+*.err
