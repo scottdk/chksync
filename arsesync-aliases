@@ -1,0 +1,2 @@
+alias arsesync='sudo  rsync --archive --one-file-system --human-readable --info=progress2,stats2,nonreg1,mount --dry-run'
+alias arsesync-go='sudo rsync --archive --one-file-system --human-readable --info=progress2,stats2,nonreg1,mount'

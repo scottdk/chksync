@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#current_folder=$(pwd | sed 's/\/mnt\/usb/\/DataVol1/' | sed 's/\/CACHEDEV1_DATA//')
+current_folder=$(pwd) # | sed 's/\/mnt\/usb/')
+
+if [[ "$current_folder" == "/mnt/usb"* ]]; then
+  exter="$current_folder"
+  local=$(echo "$current_folder" | sed 's/\/mnt\/usb/\/mnt\/Pool1\//')
+else
+  local="$current_folder"
+  exter=$(echo "$current_folder" | sed 's/\/mnt\/Pool1/\/mnt\/usb/')
+fi
+
+echo "local: $local"
+if [ ! -d "$local" ]; then
+  echo "local: $local does not exist"
+  exit 1
+fi
+
+echo "exter: $exter"
+if [ ! -d "$exter" ]; then
+  echo "exter: $exter does not exist"
+  exit 1
+fi
+
+chksync -v "$local" "$exter"
+
+cd "$current_folder"
